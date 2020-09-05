@@ -1,0 +1,3471 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# numpy.linalg is module for linear algebra . Read online documentation"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<hr><font color=\"green\"><h1>from file: C10S2_SqMat</h1></font>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Basics of Linear Algebra for Machine Learning\n",
+    "## Types of Matrices\n",
+    "## Square Matrix\n",
+    "## Ch10, Page 71"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[1 2]\n",
+      " [3 4]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "from numpy import array\n",
+    "# define square 2x2 matrix\n",
+    "A = array([\n",
+    "    [1, 2],\n",
+    "    [3, 4]\n",
+    "])\n",
+    "print(A)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<hr><font color=\"green\"><h1>from file: C10S3_SymMat</h1></font>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Basics of Linear Algebra for Machine Learning\n",
+    "## Types of Matrices\n",
+    "## Symmetric Matrix\n",
+    "## Ch10, Page 72"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[1 2 3]\n",
+      " [2 1 2]\n",
+      " [3 2 1]]\n",
+      "[[1 2 3]\n",
+      " [2 1 2]\n",
+      " [3 2 1]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "from numpy import array\n",
+    "# define square symmetric 3x3  matrix\n",
+    "A = array([\n",
+    "    [1, 2, 3],\n",
+    "    [2, 1, 2],\n",
+    "    [3, 2, 1]\n",
+    "])\n",
+    "print(A)\n",
+    "\n",
+    "# transpose A\n",
+    "Aprime = A.T\n",
+    "print(Aprime)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<hr><font color=\"green\"><h1>from file: C10S4_TriMat</h1></font>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Basics of Linear Algebra for Machine Learning\n",
+    "## Types of Matrices\n",
+    "## Triangular Matrix\n",
+    "## Ch10, Page 73"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[1 2 3]\n",
+      " [2 1 2]\n",
+      " [3 2 1]]\n",
+      "[[1 0 0]\n",
+      " [2 1 0]\n",
+      " [3 2 1]]\n",
+      "[[1 2 3]\n",
+      " [0 1 2]\n",
+      " [0 0 1]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "from numpy import array\n",
+    "from numpy import tril\n",
+    "from numpy import triu\n",
+    "# define square 3x3  matrix\n",
+    "A = array([\n",
+    "    [1, 2, 3],\n",
+    "    [2, 1, 2],\n",
+    "    [3, 2, 1]\n",
+    "])\n",
+    "print(A)\n",
+    "# lower triangular matrix\n",
+    "lower = tril(A)\n",
+    "print(lower)\n",
+    "# upper triangular matrix\n",
+    "upper = triu(A)\n",
+    "print(upper)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<hr><font color=\"green\"><h1>from file: C10S5_DiagMat</h1></font>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Basics of Linear Algebra for Machine Learning\n",
+    "## Types of Matrices\n",
+    "## Diagonal Matrix\n",
+    "## Ch10, Page 74"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[1 2 3]\n",
+      " [2 1 2]\n",
+      " [3 2 1]\n",
+      " [1 2 3]\n",
+      " [2 1 2]]\n",
+      "[1 1 1]\n",
+      "[[1 0 0]\n",
+      " [0 1 0]\n",
+      " [0 0 1]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "from numpy import array\n",
+    "from numpy import diag\n",
+    "# define 5x3  matrix\n",
+    "A = array([\n",
+    "    [1, 2, 3],\n",
+    "    [2, 1, 2],\n",
+    "    [3, 2, 1],\n",
+    "    [1, 2, 3],\n",
+    "    [2, 1, 2]\n",
+    "])\n",
+    "print(A)\n",
+    "# get diagonal vector\n",
+    "d = diag(A)\n",
+    "print(d)\n",
+    "# get diagonal matrix from vector\n",
+    "D = diag(d)\n",
+    "print(D)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<hr><font color=\"green\"><h1>from file: C10S6_IdenMat</h1></font>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Basics of Linear Algebra for Machine Learning\n",
+    "## Types of Matrices\n",
+    "## Identity Matrix\n",
+    "## Ch10, Page 75"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[1 2 3]\n",
+      " [2 1 2]\n",
+      " [3 2 1]\n",
+      " [1 2 3]\n",
+      " [2 1 2]]\n",
+      "[1 1 1]\n",
+      "[[1 0 0]\n",
+      " [0 1 0]\n",
+      " [0 0 1]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "from numpy import identity\n",
+    "# identity matrix\n",
+    "I = identity"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<hr><font color=\"green\"><h1>from file: C10S7_OrthoMat</h1></font>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Basics of Linear Algebra for Machine Learning\n",
+    "## Types of Matrices\n",
+    "## Orthogonal Matrix\n",
+    "## Ch10, Page 76"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[ 1  0]\n",
+      " [ 0 -1]]\n",
+      "[[ 1.  0.]\n",
+      " [-0. -1.]]\n",
+      "[[ 1  0]\n",
+      " [ 0 -1]]\n",
+      "[[1 0]\n",
+      " [0 1]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "from numpy import array\n",
+    "from numpy.linalg import inv\n",
+    "# define orthogonal matrix\n",
+    "Q = array([\n",
+    "    [1, 0],\n",
+    "    [0, -1]\n",
+    "])\n",
+    "print(Q)\n",
+    "# inverse equivalance\n",
+    "V = inv(Q)\n",
+    "print(V)\n",
+    "# transposed\n",
+    "Qt = Q.T\n",
+    "print(Qt)\n",
+    "# identity equivalence\n",
+    "I = Q.dot(Qt)\n",
+    "print(I)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<hr><font color=\"green\"><h1>from file: C11S2_TransposeMat</h1></font>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Basics of Linear Algebra for Machine Learning\n",
+    "## Matrix Operations\n",
+    "## Matrix Transpose\n",
+    "## Ch11, Page 80"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[1 1]\n",
+      " [0 1]\n",
+      " [0 0]]\n",
+      "[[1 0 0]\n",
+      " [1 1 0]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "from numpy import array\n",
+    "# define matrix\n",
+    "A = array([\n",
+    "    [1, 1],\n",
+    "    [0, 1],\n",
+    "    [0, 0]\n",
+    "])\n",
+    "print(A)\n",
+    "# transposed\n",
+    "At = A.T\n",
+    "print(At)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<hr><font color=\"green\"><h1>from file: C11S3_InverseMat</h1></font>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Basics of Linear Algebra for Machine Learning\n",
+    "## Matrix Operations\n",
+    "## Matrix Inverse\n",
+    "## Ch11, Page 81"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[1 2]\n",
+      " [3 4]]\n",
+      "[[-2.   1. ]\n",
+      " [ 1.5 -0.5]]\n",
+      "[[1.0000000e+00 0.0000000e+00]\n",
+      " [8.8817842e-16 1.0000000e+00]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "from numpy import array\n",
+    "from numpy.linalg import inv\n",
+    "# define matrix\n",
+    "A = array([\n",
+    "    [1, 2],\n",
+    "    [3, 4]\n",
+    "])\n",
+    "print(A)\n",
+    "# invert matrix\n",
+    "B = inv(A)\n",
+    "print(B)\n",
+    "# multiply A and B\n",
+    "I = A.dot(B)\n",
+    "print(I)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<hr><font color=\"green\"><h1>from file: C11S4_TraceMat</h1></font>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Basics of Linear Algebra for Machine Learning\n",
+    "## Matrix Operations\n",
+    "## Matrix Trace\n",
+    "## Ch11, Page 83"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[1 2]\n",
+      " [3 4]]\n",
+      "[[-2.   1. ]\n",
+      " [ 1.5 -0.5]]\n",
+      "[[1.0000000e+00 0.0000000e+00]\n",
+      " [8.8817842e-16 1.0000000e+00]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "from numpy import array\n",
+    "from numpy import trace\n",
+    "# define matrix\n",
+    "A = array([\n",
+    "    [1, 2],\n",
+    "    [3, 4]\n",
+    "])\n",
+    "print(A)\n",
+    "# calc trace\n",
+    "B = trace(A)\n",
+    "print(B)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<hr><font color=\"green\"><h1>from file: C11S5_DetMat</h1></font>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Basics of Linear Algebra for Machine Learning\n",
+    "## Matrix Operations\n",
+    "## Matrix Determinant\n",
+    "## Ch11, Page 84"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[1 2 3]\n",
+      " [4 5 6]\n",
+      " [7 8 9]]\n",
+      "[[2 1 1]\n",
+      " [1 3 1]\n",
+      " [1 1 1]]\n",
+      "0.0\n",
+      "2.0000000000000004\n"
+     ]
+    }
+   ],
+   "source": [
+    "from numpy import array\n",
+    "from numpy.linalg import det\n",
+    "# define matrix\n",
+    "A = array([\n",
+    "    [1, 2, 3],\n",
+    "    [4, 5, 6],\n",
+    "    [7, 8, 9]\n",
+    "])\n",
+    "A2 = array([\n",
+    "    [2, 1, 1],\n",
+    "    [1, 3, 1],\n",
+    "    [1, 1, 1]\n",
+    "])\n",
+    "print(A)\n",
+    "print(A2)\n",
+    "# calc determinant, ie not invertable\n",
+    "B = det(A)\n",
+    "print(B)\n",
+    "\n",
+    "# calc determinant, ie invertable\n",
+    "B2 = det(A2)\n",
+    "print(B2)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<hr><font color=\"green\"><h1>from file: C11S6_RankMat</h1></font>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Basics of Linear Algebra for Machine Learning\n",
+    "## Matrix Operations\n",
+    "## Matrix Rank\n",
+    "## Ch11, Page 85"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "1\n",
+      "[[1 2 3]]\n",
+      "[[0 0 0]]\n",
+      "[[1 2]\n",
+      " [3 4]]\n",
+      "[[1 3]\n",
+      " [1 3]]\n",
+      "1\n",
+      "1\n",
+      "0\n",
+      "2\n",
+      "1\n"
+     ]
+    }
+   ],
+   "source": [
+    "from numpy import array\n",
+    "from numpy.linalg import matrix_rank\n",
+    "# define scalar\n",
+    "S0 = 1\n",
+    "# define vector\n",
+    "V1 = array([\n",
+    "    [1, 2, 3]\n",
+    "])\n",
+    "V0 = array([\n",
+    "    [0, 0, 0]\n",
+    "])\n",
+    "# define matrix\n",
+    "A1 = array([\n",
+    "    [1, 2],\n",
+    "    [3, 4]\n",
+    "])\n",
+    "A2 = array([\n",
+    "    [1, 3],\n",
+    "    [1, 3]\n",
+    "])\n",
+    "print(S0)\n",
+    "print(V1)\n",
+    "print(V0)\n",
+    "print(A1)\n",
+    "print(A2)\n",
+    "# rank \n",
+    "s0r = matrix_rank(S0)\n",
+    "print(s0r)\n",
+    "v1r = matrix_rank(V1)\n",
+    "print(v1r)\n",
+    "v0r = matrix_rank(V0)\n",
+    "print(v0r)\n",
+    "a1r = matrix_rank(A1)\n",
+    "print(a1r)\n",
+    "a2r = matrix_rank(A2)\n",
+    "print(a2r)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<hr><font color=\"green\"><h1>from file: C12S2_SparseMat</h1></font>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Basics of Linear Algebra for Machine Learning\n",
+    "## Sparse Matricies\n",
+    "## Sparse Matrix\n",
+    "## Ch12, Page 91"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from numpy import array\n",
+    "from numpy import count_nonzero\n",
+    "# define matrix\n",
+    "A = array([\n",
+    "    [1, 0, 0, 1, 0, 0],\n",
+    "    [0, 0, 2, 0, 0, 1],\n",
+    "    [0, 0, 0, 2, 0, 0]\n",
+    "])\n",
+    "# count zeros in matrix\n",
+    "countZeros = count_nonzero(A==0)\n",
+    "# find matrix size\n",
+    "matSize = A.size\n",
+    "# matrix sparsity\n",
+    "sparsity = countZeros / matSize\n",
+    "print(countZeros)\n",
+    "print(matSize)\n",
+    "print(sparsity)\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "13"
+      ]
+     },
+     "execution_count": 9,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "countZeros\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "18"
+      ]
+     },
+     "execution_count": 10,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "matSize"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "0.7222222222222222"
+      ]
+     },
+     "execution_count": 11,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "sparsity"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<hr><font color=\"green\"><h1>from file: C12S6_SparseMatPy</h1></font>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Basics of Linear Algebra for Machine Learning\n",
+    "## Sparse Matricies\n",
+    "## Sparse Matricies in Python\n",
+    "## Ch12, Page 94"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[1 0 0 1 0 0]\n",
+      " [0 0 2 0 0 1]\n",
+      " [0 0 0 2 0 0]]\n",
+      "  (0, 0)\t1\n",
+      "  (0, 3)\t1\n",
+      "  (1, 2)\t2\n",
+      "  (1, 5)\t1\n",
+      "  (2, 3)\t2\n",
+      "[[1 0 0 1 0 0]\n",
+      " [0 0 2 0 0 1]\n",
+      " [0 0 0 2 0 0]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "from numpy import array\n",
+    "from scipy.sparse import csr_matrix\n",
+    "# define dense matrix\n",
+    "A = array([\n",
+    "    [1, 0, 0, 1, 0, 0],\n",
+    "    [0, 0, 2, 0, 0, 1],\n",
+    "    [0, 0, 0, 2, 0, 0]\n",
+    "])\n",
+    "print(A)\n",
+    "# convert to sparse using csr method\n",
+    "S = csr_matrix(A)\n",
+    "print(S)\n",
+    "# reconstruct to dense\n",
+    "B = S.todense()\n",
+    "print(B)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<hr><font color=\"green\"><h1>from file: C13S3_TensorPython</h1></font>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Basics of Linear Algebra for Machine Learning\n",
+    "## Tensors in Python\n",
+    "## Tensors in Python\n",
+    "## Ch13, Page 99"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "(3, 3, 3)\n",
+      "[[[ 1  2  3]\n",
+      "  [ 4  5  6]\n",
+      "  [ 7  8  9]]\n",
+      "\n",
+      " [[10 11 12]\n",
+      "  [13 14 15]\n",
+      "  [16 17 18]]\n",
+      "\n",
+      " [[19 20 21]\n",
+      "  [22 23 24]\n",
+      "  [25 26 27]]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "from numpy import array\n",
+    "# define tensor\n",
+    "T = array([\n",
+    "    [[1,2,3], [4,5,6], [7,8,9]],\n",
+    "    [[10,11,12], [13,14,15], [16,17,18]],\n",
+    "    [[19,20,21], [22,23,24], [25,26,27]]\n",
+    "])\n",
+    "print(T.shape)\n",
+    "print(T)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<hr><font color=\"green\"><h1>from file: C13S41_TensorArithmetic</h1></font>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {
+    "pycharm": {
+     "is_executing": false
+    }
+   },
+   "outputs": [],
+   "source": [
+    "# Basics of Linear Algebra for Machine Learning\n",
+    "## Tensors in Python\n",
+    "## Tensors Addition\n",
+    "## Ch13, Page 100"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {
+    "pycharm": {
+     "is_executing": false
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "(3, 3, 3)\n",
+      "(3, 3, 3)\n",
+      "[[[ 1  2  3]\n",
+      "  [ 4  5  6]\n",
+      "  [ 7  8  9]]\n",
+      "\n",
+      " [[10 11 12]\n",
+      "  [13 14 15]\n",
+      "  [16 17 18]]\n",
+      "\n",
+      " [[19 20 21]\n",
+      "  [22 23 24]\n",
+      "  [25 26 27]]]\n",
+      "[[[1 1 1]\n",
+      "  [1 1 1]\n",
+      "  [1 1 1]]\n",
+      "\n",
+      " [[2 2 2]\n",
+      "  [2 2 2]\n",
+      "  [2 2 2]]\n",
+      "\n",
+      " [[3 3 3]\n",
+      "  [3 3 3]\n",
+      "  [3 3 3]]]\n",
+      "[[[ 2  3  4]\n",
+      "  [ 5  6  7]\n",
+      "  [ 8  9 10]]\n",
+      "\n",
+      " [[12 13 14]\n",
+      "  [15 16 17]\n",
+      "  [18 19 20]]\n",
+      "\n",
+      " [[22 23 24]\n",
+      "  [25 26 27]\n",
+      "  [28 29 30]]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "from numpy import array\n",
+    "# define 1st tensor\n",
+    "T = array([\n",
+    "    [[1,2,3], [4,5,6], [7,8,9]],\n",
+    "    [[10,11,12], [13,14,15], [16,17,18]],\n",
+    "    [[19,20,21], [22,23,24], [25,26,27]]\n",
+    "])\n",
+    "# define 2nd tensor\n",
+    "T2 = array([\n",
+    "    [[1,1,1], [1,1,1], [1,1,1]],\n",
+    "    [[2,2,2], [2,2,2], [2,2,2]],\n",
+    "    [[3,3,3], [3,3,3], [3,3,3]]\n",
+    "])\n",
+    "print(T.shape)\n",
+    "print(T2.shape)\n",
+    "print(T)\n",
+    "print(T2)\n",
+    "T3 = T + T2\n",
+    "print(T3)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<hr><font color=\"green\"><h1>from file: C13S42_TensorSubtraction</h1></font>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {
+    "pycharm": {
+     "is_executing": false
+    }
+   },
+   "outputs": [],
+   "source": [
+    "# Basics of Linear Algebra for Machine Learning\n",
+    "## Tensors in Python\n",
+    "## Tensors Subtraction\n",
+    "## Ch13, Page 101"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {
+    "pycharm": {
+     "is_executing": false
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "(3, 3, 3)\n",
+      "(3, 3, 3)\n",
+      "[[[ 1  2  3]\n",
+      "  [ 4  5  6]\n",
+      "  [ 7  8  9]]\n",
+      "\n",
+      " [[10 11 12]\n",
+      "  [13 14 15]\n",
+      "  [16 17 18]]\n",
+      "\n",
+      " [[19 20 21]\n",
+      "  [22 23 24]\n",
+      "  [25 26 27]]]\n",
+      "[[[1 1 1]\n",
+      "  [1 1 1]\n",
+      "  [1 1 1]]\n",
+      "\n",
+      " [[2 2 2]\n",
+      "  [2 2 2]\n",
+      "  [2 2 2]]\n",
+      "\n",
+      " [[3 3 3]\n",
+      "  [3 3 3]\n",
+      "  [3 3 3]]]\n",
+      "[[[ 0  1  2]\n",
+      "  [ 3  4  5]\n",
+      "  [ 6  7  8]]\n",
+      "\n",
+      " [[ 8  9 10]\n",
+      "  [11 12 13]\n",
+      "  [14 15 16]]\n",
+      "\n",
+      " [[16 17 18]\n",
+      "  [19 20 21]\n",
+      "  [22 23 24]]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "from numpy import array\n",
+    "# define 1st tensor\n",
+    "T = array([\n",
+    "    [[1,2,3], [4,5,6], [7,8,9]],\n",
+    "    [[10,11,12], [13,14,15], [16,17,18]],\n",
+    "    [[19,20,21], [22,23,24], [25,26,27]]\n",
+    "])\n",
+    "# define 2nd tensor\n",
+    "T2 = array([\n",
+    "    [[1,1,1], [1,1,1], [1,1,1]],\n",
+    "    [[2,2,2], [2,2,2], [2,2,2]],\n",
+    "    [[3,3,3], [3,3,3], [3,3,3]]\n",
+    "])\n",
+    "print(T.shape)\n",
+    "print(T2.shape)\n",
+    "print(T)\n",
+    "print(T2)\n",
+    "T3 = T - T2\n",
+    "print(T3)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<hr><font color=\"green\"><h1>from file: C13S43_TensorHadProduct</h1></font>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {
+    "pycharm": {
+     "is_executing": false
+    }
+   },
+   "outputs": [],
+   "source": [
+    "# Basics of Linear Algebra for Machine Learning\n",
+    "## Tensors in Python\n",
+    "## Tensors Hadamard Product\n",
+    "## Ch13, Page 102"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {
+    "pycharm": {
+     "is_executing": false
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "(3, 3, 3)\n",
+      "(3, 3, 3)\n",
+      "[[[ 1  2  3]\n",
+      "  [ 4  5  6]\n",
+      "  [ 7  8  9]]\n",
+      "\n",
+      " [[10 11 12]\n",
+      "  [13 14 15]\n",
+      "  [16 17 18]]\n",
+      "\n",
+      " [[19 20 21]\n",
+      "  [22 23 24]\n",
+      "  [25 26 27]]]\n",
+      "[[[1 1 1]\n",
+      "  [1 1 1]\n",
+      "  [1 1 1]]\n",
+      "\n",
+      " [[2 2 2]\n",
+      "  [2 2 2]\n",
+      "  [2 2 2]]\n",
+      "\n",
+      " [[3 3 3]\n",
+      "  [3 3 3]\n",
+      "  [3 3 3]]]\n",
+      "[[[ 1  2  3]\n",
+      "  [ 4  5  6]\n",
+      "  [ 7  8  9]]\n",
+      "\n",
+      " [[20 22 24]\n",
+      "  [26 28 30]\n",
+      "  [32 34 36]]\n",
+      "\n",
+      " [[57 60 63]\n",
+      "  [66 69 72]\n",
+      "  [75 78 81]]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "from numpy import array\n",
+    "# define 1st tensor\n",
+    "T = array([\n",
+    "    [[1,2,3], [4,5,6], [7,8,9]],\n",
+    "    [[10,11,12], [13,14,15], [16,17,18]],\n",
+    "    [[19,20,21], [22,23,24], [25,26,27]]\n",
+    "])\n",
+    "# define 2nd tensor\n",
+    "T2 = array([\n",
+    "    [[1,1,1], [1,1,1], [1,1,1]],\n",
+    "    [[2,2,2], [2,2,2], [2,2,2]],\n",
+    "    [[3,3,3], [3,3,3], [3,3,3]]\n",
+    "])\n",
+    "print(T.shape)\n",
+    "print(T2.shape)\n",
+    "print(T)\n",
+    "print(T2)\n",
+    "T3 = T * T2\n",
+    "print(T3)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<hr><font color=\"green\"><h1>from file: C13S44_TensorDivision</h1></font>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {
+    "pycharm": {
+     "is_executing": false
+    }
+   },
+   "outputs": [],
+   "source": [
+    "# Basics of Linear Algebra for Machine Learning\n",
+    "## Tensors in Python\n",
+    "## Tensors Division\n",
+    "## Ch13, Page 103"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {
+    "pycharm": {
+     "is_executing": false
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "(3, 3, 3)\n",
+      "(3, 3, 3)\n",
+      "[[[ 1  2  3]\n",
+      "  [ 4  5  6]\n",
+      "  [ 7  8  9]]\n",
+      "\n",
+      " [[10 11 12]\n",
+      "  [13 14 15]\n",
+      "  [16 17 18]]\n",
+      "\n",
+      " [[19 20 21]\n",
+      "  [22 23 24]\n",
+      "  [25 26 27]]]\n",
+      "[[[1 1 1]\n",
+      "  [1 1 1]\n",
+      "  [1 1 1]]\n",
+      "\n",
+      " [[2 2 2]\n",
+      "  [2 2 2]\n",
+      "  [2 2 2]]\n",
+      "\n",
+      " [[3 3 3]\n",
+      "  [3 3 3]\n",
+      "  [3 3 3]]]\n",
+      "[[[1.         2.         3.        ]\n",
+      "  [4.         5.         6.        ]\n",
+      "  [7.         8.         9.        ]]\n",
+      "\n",
+      " [[5.         5.5        6.        ]\n",
+      "  [6.5        7.         7.5       ]\n",
+      "  [8.         8.5        9.        ]]\n",
+      "\n",
+      " [[6.33333333 6.66666667 7.        ]\n",
+      "  [7.33333333 7.66666667 8.        ]\n",
+      "  [8.33333333 8.66666667 9.        ]]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "from numpy import array\n",
+    "# define 1st tensor\n",
+    "T = array([\n",
+    "    [[1,2,3], [4,5,6], [7,8,9]],\n",
+    "    [[10,11,12], [13,14,15], [16,17,18]],\n",
+    "    [[19,20,21], [22,23,24], [25,26,27]]\n",
+    "])\n",
+    "# define 2nd tensor\n",
+    "T2 = array([\n",
+    "    [[1,1,1], [1,1,1], [1,1,1]],\n",
+    "    [[2,2,2], [2,2,2], [2,2,2]],\n",
+    "    [[3,3,3], [3,3,3], [3,3,3]]\n",
+    "])\n",
+    "print(T.shape)\n",
+    "print(T2.shape)\n",
+    "print(T)\n",
+    "print(T2)\n",
+    "T3 = T / T2\n",
+    "print(T3)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<hr><font color=\"green\"><h1>from file: C13S45_TensorProduct</h1></font>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {
+    "pycharm": {
+     "is_executing": false
+    }
+   },
+   "outputs": [],
+   "source": [
+    "# Basics of Linear Algebra for Machine Learning\n",
+    "## Tensors in Python\n",
+    "## Tensors  Product\n",
+    "## Ch13, Page 104"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "metadata": {
+    "pycharm": {
+     "is_executing": false
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "(2, 2)\n",
+      "(2, 2)\n",
+      "[[1 2]\n",
+      " [1 2]]\n",
+      "[[3 4]\n",
+      " [3 4]]\n",
+      "[[[[3 4]\n",
+      "   [3 4]]\n",
+      "\n",
+      "  [[6 8]\n",
+      "   [6 8]]]\n",
+      "\n",
+      "\n",
+      " [[[3 4]\n",
+      "   [3 4]]\n",
+      "\n",
+      "  [[6 8]\n",
+      "   [6 8]]]]\n",
+      "(2, 2, 2, 2)\n"
+     ]
+    }
+   ],
+   "source": [
+    "from numpy import array\n",
+    "from numpy import tensordot\n",
+    "# define 1st tensor\n",
+    "T = array([[1,2], [1,2]])\n",
+    "# define 2nd tensor\n",
+    "T2 = array([[3,4], [3,4]])\n",
+    "print(T.shape)\n",
+    "print(T2.shape)\n",
+    "print(T)\n",
+    "print(T2)\n",
+    "T3 = tensordot(T, T2, axes=0)\n",
+    "print(T3)\n",
+    "print(T3.shape)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<hr><font color=\"green\"><h1>from file: C14S3_LUDecomp</h1></font>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {
+    "pycharm": {
+     "is_executing": false
+    }
+   },
+   "outputs": [],
+   "source": [
+    "# Basics of Linear Algebra for Machine Learning\n",
+    "## Matrix Decomposition\n",
+    "## LU Decomposition\n",
+    "## Ch14, Page 109"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {
+    "pycharm": {
+     "is_executing": false
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[1 2 3]\n",
+      " [4 5 6]\n",
+      " [7 8 9]]\n",
+      "[[0. 1. 0.]\n",
+      " [0. 0. 1.]\n",
+      " [1. 0. 0.]]\n",
+      "[[1.         0.         0.        ]\n",
+      " [0.14285714 1.         0.        ]\n",
+      " [0.57142857 0.5        1.        ]]\n",
+      "[[ 7.00000000e+00  8.00000000e+00  9.00000000e+00]\n",
+      " [ 0.00000000e+00  8.57142857e-01  1.71428571e+00]\n",
+      " [ 0.00000000e+00  0.00000000e+00 -1.58603289e-16]]\n",
+      "(3, 3)\n",
+      "(3, 3)\n",
+      "(3, 3)\n",
+      "(3, 3)\n",
+      "[[1. 2. 3.]\n",
+      " [4. 5. 6.]\n",
+      " [7. 8. 9.]]\n",
+      "(3, 3)\n"
+     ]
+    }
+   ],
+   "source": [
+    "from numpy import array\n",
+    "from scipy.linalg import lu\n",
+    "# define square matrix\n",
+    "A = array([\n",
+    "    [1,2,3],\n",
+    "    [4,5,6],\n",
+    "    [7,8,9]\n",
+    "])\n",
+    "print(A)\n",
+    "# factorize\n",
+    "P, L, U = lu(A)\n",
+    "print(P)\n",
+    "print(L)\n",
+    "print(U)\n",
+    "print(A.shape)\n",
+    "print(P.shape)\n",
+    "print(L.shape)\n",
+    "print(U.shape)\n",
+    "# reconstruct\n",
+    "B = P.dot(L).dot(U)\n",
+    "print(B)\n",
+    "print(B.shape)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<hr><font color=\"green\"><h1>from file: C14S4_QRDecomp</h1></font>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {
+    "pycharm": {
+     "is_executing": false
+    }
+   },
+   "outputs": [],
+   "source": [
+    "# Basics of Linear Algebra for Machine Learning\n",
+    "## Matrix Decomposition\n",
+    "## QR Decomposition\n",
+    "## Ch14, Page 111"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {
+    "pycharm": {
+     "is_executing": false
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[1 2]\n",
+      " [4 5]\n",
+      " [7 8]]\n",
+      "[[-0.12309149  0.90453403  0.40824829]\n",
+      " [-0.49236596  0.30151134 -0.81649658]\n",
+      " [-0.86164044 -0.30151134  0.40824829]]\n",
+      "[[-8.1240384  -9.6011363 ]\n",
+      " [ 0.          0.90453403]\n",
+      " [ 0.          0.        ]]\n",
+      "(3, 2)\n",
+      "(3, 3)\n",
+      "(3, 2)\n",
+      "[[1. 2.]\n",
+      " [4. 5.]\n",
+      " [7. 8.]]\n",
+      "(3, 2)\n"
+     ]
+    }
+   ],
+   "source": [
+    "from numpy import array\n",
+    "from scipy.linalg import qr\n",
+    "# define square matrix\n",
+    "A = array([\n",
+    "    [1,2],\n",
+    "    [4,5],\n",
+    "    [7,8]\n",
+    "])\n",
+    "print(A)\n",
+    "# factorize\n",
+    "Q, R = qr(A, mode='full')\n",
+    "print(Q)\n",
+    "print(R)\n",
+    "print(A.shape)\n",
+    "print(Q.shape)\n",
+    "print(R.shape)\n",
+    "# reconstruct\n",
+    "B = Q.dot(R)\n",
+    "print(B)\n",
+    "print(B.shape)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<hr><font color=\"green\"><h1>from file: C14S5_CholeskyDecomp</h1></font>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {
+    "pycharm": {
+     "is_executing": false
+    }
+   },
+   "outputs": [],
+   "source": [
+    "# Basics of Linear Algebra for Machine Learning\n",
+    "## Matrix Decomposition\n",
+    "## Cholesky Decomposition\n",
+    "## Ch14, Page 112"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "metadata": {
+    "pycharm": {
+     "is_executing": false
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[2 1 1]\n",
+      " [1 2 1]\n",
+      " [1 1 2]]\n",
+      "[[1.41421356 0.         0.        ]\n",
+      " [0.70710678 1.22474487 0.        ]\n",
+      " [0.70710678 0.40824829 1.15470054]]\n",
+      "(3, 3)\n",
+      "(3, 3)\n",
+      "[[2. 1. 1.]\n",
+      " [1. 2. 1.]\n",
+      " [1. 1. 2.]]\n",
+      "(3, 3)\n"
+     ]
+    }
+   ],
+   "source": [
+    "from numpy import array\n",
+    "from scipy.linalg import cholesky\n",
+    "# define square matrix\n",
+    "A = array([\n",
+    "    [2,1,1],\n",
+    "    [1,2,1],\n",
+    "    [1,1,2]\n",
+    "])\n",
+    "print(A)\n",
+    "# factorize lower\n",
+    "L = cholesky(A, lower=True)\n",
+    "print(L)\n",
+    "print(A.shape)\n",
+    "print(L.shape)\n",
+    "# reconstruct\n",
+    "B = L.dot(L.T)\n",
+    "print(B)\n",
+    "print(B.shape)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[1.41421356 0.70710678 0.70710678]\n",
+      " [0.         1.22474487 0.40824829]\n",
+      " [0.         0.         1.15470054]]\n",
+      "(3, 3)\n",
+      "(3, 3)\n",
+      "[[2. 1. 1.]\n",
+      " [1. 2. 1.]\n",
+      " [1. 1. 2.]]\n",
+      "(3, 3)\n"
+     ]
+    }
+   ],
+   "source": [
+    "# factorize upper\n",
+    "U = cholesky(A, lower=False)\n",
+    "print(U)\n",
+    "print(A.shape)\n",
+    "print(U.shape)\n",
+    "B = L.dot(L.T)\n",
+    "print(B)\n",
+    "print(B.shape)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<hr><font color=\"green\"><h1>from file: C15S4_CalcEigenDecomp</h1></font>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {
+    "pycharm": {
+     "is_executing": false
+    }
+   },
+   "outputs": [],
+   "source": [
+    "# Basics of Linear Algebra for Machine Learning\n",
+    "## Eigendecomposition\n",
+    "## Calc of Eigendecomposition\n",
+    "## Ch15, Page 118"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {
+    "pycharm": {
+     "is_executing": false
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[1 2 3]\n",
+      " [4 5 6]\n",
+      " [7 8 9]]\n",
+      "[ 1.61168440e+01 -1.11684397e+00 -9.75918483e-16]\n",
+      "[[-0.23197069 -0.78583024  0.40824829]\n",
+      " [-0.52532209 -0.08675134 -0.81649658]\n",
+      " [-0.8186735   0.61232756  0.40824829]]\n",
+      "(3, 3)\n",
+      "(3,)\n",
+      "(3, 3)\n"
+     ]
+    }
+   ],
+   "source": [
+    "from numpy import array\n",
+    "from numpy.linalg import eig\n",
+    "# define square matrix\n",
+    "A = array([\n",
+    "    [1,2,3],\n",
+    "    [4,5,6],\n",
+    "    [7,8,9]\n",
+    "])\n",
+    "print(A)\n",
+    "# factorize\n",
+    "evals, evects = eig(A)\n",
+    "print(evals)\n",
+    "print(evects)\n",
+    "print(A.shape)\n",
+    "print(evals.shape)\n",
+    "print(evects.shape)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<hr><font color=\"green\"><h1>from file: C15S5_ConfirmEigValVect</h1></font>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {
+    "pycharm": {
+     "is_executing": false
+    }
+   },
+   "outputs": [],
+   "source": [
+    "# Basics of Linear Algebra for Machine Learning\n",
+    "## Eigendecomposition\n",
+    "## Confirm an Eigenvector and Eigenvalue\n",
+    "## Ch15, Page 119"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {
+    "pycharm": {
+     "is_executing": false
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[1 2 3]\n",
+      " [4 5 6]\n",
+      " [7 8 9]]\n",
+      "[ 1.61168440e+01 -1.11684397e+00 -9.75918483e-16]\n",
+      "[[-0.23197069 -0.78583024  0.40824829]\n",
+      " [-0.52532209 -0.08675134 -0.81649658]\n",
+      " [-0.8186735   0.61232756  0.40824829]]\n",
+      "(3, 3)\n",
+      "(3,)\n",
+      "(3, 3)\n",
+      "[ -3.73863537  -8.46653421 -13.19443305]\n",
+      "[ -3.73863537  -8.46653421 -13.19443305]\n"
+     ]
+    }
+   ],
+   "source": [
+    "from numpy import array\n",
+    "from numpy.linalg import eig\n",
+    "# define square matrix\n",
+    "A = array([\n",
+    "    [1,2,3],\n",
+    "    [4,5,6],\n",
+    "    [7,8,9]\n",
+    "])\n",
+    "print(A)\n",
+    "# factorize\n",
+    "evals, evects = eig(A)\n",
+    "print(evals)\n",
+    "print(evects)\n",
+    "print(A.shape)\n",
+    "print(evals.shape)\n",
+    "print(evects.shape)\n",
+    "# confirm first eigenvector\n",
+    "B = A.dot(evects[:,0])\n",
+    "print(B)\n",
+    "C = evects[:,0] * evals[0]\n",
+    "print(C)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<hr><font color=\"green\"><h1>from file: C15S6_ReconstructMat</h1></font>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {
+    "pycharm": {
+     "is_executing": false
+    }
+   },
+   "outputs": [],
+   "source": [
+    "# Basics of Linear Algebra for Machine Learning\n",
+    "## Eigendecomposition\n",
+    "## Reconstruct Matrix\n",
+    "## Ch15, Page 120"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {
+    "pycharm": {
+     "is_executing": false
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[1 2 3]\n",
+      " [4 5 6]\n",
+      " [7 8 9]]\n",
+      "(3, 3)\n",
+      "[[1. 2. 3.]\n",
+      " [4. 5. 6.]\n",
+      " [7. 8. 9.]]\n",
+      "(3, 3)\n",
+      "(3, 3)\n",
+      "(3, 3)\n",
+      "(3, 3)\n"
+     ]
+    }
+   ],
+   "source": [
+    "from numpy import diag\n",
+    "from numpy.linalg import inv\n",
+    "from numpy import array\n",
+    "from numpy.linalg import eig\n",
+    "# define square matrix\n",
+    "A = array([\n",
+    "    [1,2,3],\n",
+    "    [4,5,6],\n",
+    "    [7,8,9]\n",
+    "])\n",
+    "print(A)\n",
+    "print(A.shape)\n",
+    "# factorize\n",
+    "evals, evects = eig(A)\n",
+    "# create a matrix from eigenvectors\n",
+    "Q = evects\n",
+    "# create inverse of eigenvectos matrix\n",
+    "R = inv(Q)\n",
+    "# create diagonal matrix from eigenvalues\n",
+    "L = diag(evals)\n",
+    "# reconstruct\n",
+    "B = Q.dot(L).dot(R)\n",
+    "print(B)\n",
+    "print(B.shape)\n",
+    "print(Q.shape)\n",
+    "print(R.shape)\n",
+    "print(L.shape)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<hr><font color=\"green\"><h1>from file: C4S1_NumPyNd</h1></font>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Basics of Linear Algebra for Machine Learning\n",
+    "## Intro to NumPy\n",
+    "## NumPy N-dimensional Arrays\n",
+    "## Ch4, Page 17"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[1. 2. 3.]\n",
+      "(3,)\n",
+      "float64\n"
+     ]
+    }
+   ],
+   "source": [
+    "# create array\n",
+    "from numpy import array\n",
+    "# create array\n",
+    "l = [1.0, 2.0, 3.0]\n",
+    "a = array(l)\n",
+    "# display array\n",
+    "print(a)\n",
+    "# display array shape\n",
+    "print(a.shape)\n",
+    "# display array data type\n",
+    "print(a.dtype)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<hr><font color=\"green\"><h1>from file: C4S2_FuncCreateArrays</h1></font>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Basics of Linear Algebra for Machine Learning\n",
+    "## Intro to NumPy\n",
+    "## Functions to Create Arrays\n",
+    "## Ch4, Page 18"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[4.64818826e-310 4.64818810e-310 0.00000000e+000]\n",
+      " [0.00000000e+000 0.00000000e+000 0.00000000e+000]\n",
+      " [0.00000000e+000 0.00000000e+000 3.95252517e-322]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "# create empty array\n",
+    "from numpy import empty\n",
+    "a = empty([3,3])\n",
+    "print(a)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[0. 0. 0.]\n",
+      " [0. 0. 0.]\n",
+      " [0. 0. 0.]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "# create zero array\n",
+    "from numpy import zeros\n",
+    "a = zeros([3,3])\n",
+    "print(a)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[1. 1. 1.]\n",
+      " [1. 1. 1.]\n",
+      " [1. 1. 1.]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "# create ones array\n",
+    "from numpy import ones\n",
+    "a = ones([3,3])\n",
+    "print(a)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<hr><font color=\"green\"><h1>from file: C4S3_CombArrays</h1></font>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Basics of Linear Algebra for Machine Learning\n",
+    "## Intro to NumPy\n",
+    "## Combining Arrays\n",
+    "## Ch4, Page 19"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[1 2 3]\n",
+      "[4 5 6]\n",
+      "[[1 2 3]\n",
+      " [4 5 6]]\n",
+      "(2, 3)\n"
+     ]
+    }
+   ],
+   "source": [
+    "# create array with vstack\n",
+    "from numpy import array\n",
+    "from numpy import vstack\n",
+    "# create first array\n",
+    "a1 = array([1, 2, 3])\n",
+    "print(a1)\n",
+    "# create second array\n",
+    "a2 = array([4, 5, 6])\n",
+    "print(a2)\n",
+    "# create vertical stack\n",
+    "a3 = vstack((a1, a2))\n",
+    "print(a3)\n",
+    "print(a3.shape)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[1 2 3]\n",
+      "[5 6 7]\n",
+      "[1 2 3 5 6 7]\n",
+      "(6,)\n"
+     ]
+    }
+   ],
+   "source": [
+    "# create array with hstack\n",
+    "from numpy import hstack\n",
+    "# create first array\n",
+    "a11 = array([1, 2, 3])\n",
+    "print(a11)\n",
+    "# create second array\n",
+    "a21 = array([5, 6, 7])\n",
+    "print(a21)\n",
+    "# create a horizontal stack\n",
+    "a31 = hstack((a11,a21))\n",
+    "print(a31)\n",
+    "print(a31.shape)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<hr><font color=\"green\"><h1>from file: C5S1_List2Arrays</h1></font>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Basics of Linear Algebra for Machine Learning\n",
+    "## Index, Slice and Reshape NumPy Arrays\n",
+    "## From List to Arrays\n",
+    "## Ch5, Page 23"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[1, 2, 3, 4, 5]\n",
+      "[1 2 3 4 5]\n",
+      "<class 'list'>\n",
+      "<class 'numpy.ndarray'>\n"
+     ]
+    }
+   ],
+   "source": [
+    "# create one dim array\n",
+    "from numpy import array\n",
+    "# list of data\n",
+    "data = [1, 2, 3, 4, 5]\n",
+    "# array of data\n",
+    "data1 = array(data)\n",
+    "print(data)\n",
+    "print(data1)\n",
+    "print(type(data))\n",
+    "print(type(data1))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[1, 2], [3, 4], [5, 6]]\n",
+      "[[1 2]\n",
+      " [3 4]\n",
+      " [5 6]]\n",
+      "<class 'list'>\n",
+      "<class 'numpy.ndarray'>\n"
+     ]
+    }
+   ],
+   "source": [
+    "# create a 2 dim array\n",
+    "# list of data\n",
+    "data = [[1, 2],\n",
+    "        [3, 4],\n",
+    "        [5, 6]\n",
+    "       ]\n",
+    "# array of data\n",
+    "data1 = array(data)\n",
+    "print(data)\n",
+    "print(data1)\n",
+    "print(type(data))\n",
+    "print(type(data1))\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<hr><font color=\"green\"><h1>from file: C5S2_ArrayIndexing</h1></font>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Basics of Linear Algebra for Machine Learning\n",
+    "## Index, Slice and Reshape NumPy Arrays\n",
+    "## Array Indexing\n",
+    "## Ch5, Page 25"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "1\n",
+      "5\n"
+     ]
+    }
+   ],
+   "source": [
+    "# index a 1 dim array\n",
+    "from numpy import array\n",
+    "# define array\n",
+    "data = array([1, 2, 3, 4, 5])\n",
+    "# index data\n",
+    "print(data[0])\n",
+    "print(data[4])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "IndexError",
+     "evalue": "index 5 is out of bounds for axis 0 with size 5",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mIndexError\u001b[0m                                Traceback (most recent call last)",
+      "\u001b[0;32m<ipython-input-4-612dc35c3546>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[1;32m      2\u001b[0m \u001b[0mdata11\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0marray\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;36m6\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;36m7\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;36m8\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;36m9\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;36m10\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      3\u001b[0m \u001b[0;31m# index data\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m----> 4\u001b[0;31m \u001b[0mprint\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mdata11\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;36m5\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+      "\u001b[0;31mIndexError\u001b[0m: index 5 is out of bounds for axis 0 with size 5"
+     ]
+    }
+   ],
+   "source": [
+    "# index array out of bounds\n",
+    "data11 = array([6, 7, 8, 9, 10])\n",
+    "# index data\n",
+    "print(data11[5])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "555\n",
+      "222\n"
+     ]
+    }
+   ],
+   "source": [
+    "# negative array indexing\n",
+    "data21 = array([111, 222, 333, 444, 555])\n",
+    "# index data\n",
+    "print(data21[-1])\n",
+    "print(data21[-4])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "1\n",
+      "9\n",
+      "6\n"
+     ]
+    }
+   ],
+   "source": [
+    "# index 2 dim array single element\n",
+    "data31 = array([[1, 2, 3],\n",
+    "                [4, 5, 6],\n",
+    "                [7, 8, 9]\n",
+    "               ])\n",
+    "# index data\n",
+    "print(data31[0, 0])\n",
+    "print(data31[2, 2])\n",
+    "print(data31[1, 2])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[11 22 33]\n",
+      "[44 55 66]\n"
+     ]
+    }
+   ],
+   "source": [
+    "# index 2 dim array row and column access\n",
+    "data41 = array([[11, 22, 33],\n",
+    "                [44, 55, 66],\n",
+    "                [77, 88, 99]\n",
+    "               ])\n",
+    "# index row 1\n",
+    "print(data41[0,])\n",
+    "# inddex col 2\n",
+    "print(data41[])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<hr><font color=\"green\"><h1>from file: C5S3_ArraySlicing</h1></font>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Basics of Linear Algebra for Machine Learning\n",
+    "## Index, Slice and Reshape NumPy Arrays\n",
+    "## Array Slicing\n",
+    "## Ch5, Page 27"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[1 2 3 4 5]\n",
+      "[1 2 3]\n",
+      "[3 4 5]\n",
+      "[4 5]\n"
+     ]
+    }
+   ],
+   "source": [
+    "# slice a 1 dim array\n",
+    "from numpy import array\n",
+    "# define array\n",
+    "data = array([1, 2, 3, 4, 5])\n",
+    "# show all\n",
+    "print(data[:])\n",
+    "# show 0th element to 3 over wrt 0th\n",
+    "print(data[0:3])\n",
+    "# show 2th element to 3 over wrt 0th\n",
+    "print(data[2:5])\n",
+    "# show last 2 elements\n",
+    "print(data[-2:])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[77 88 99]\n",
+      "[33 66 99]\n",
+      "[99]\n",
+      "[77 88]\n",
+      "[88]\n",
+      "[77 88]\n"
+     ]
+    }
+   ],
+   "source": [
+    "# 2 dim slicing\n",
+    "data11 = array([[11, 22, 33],\n",
+    "                [44, 55, 66],\n",
+    "                [77, 88, 99]\n",
+    "               ])\n",
+    "# seperate data\n",
+    "x, y = data11[2,:], data11[:,2]\n",
+    "print(x)\n",
+    "print(y)\n",
+    "# seperate more data\n",
+    "x1, y1 = data11[2,-1:], data11[2,:-1]\n",
+    "print(x1)\n",
+    "print(y1)\n",
+    "# seperate even more data\n",
+    "x2, y2 = data11[2,1:2], data11[2,0:2]\n",
+    "print(x2)\n",
+    "print(y2)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 32,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[111 222 333]\n",
+      " [444 555 666]]\n",
+      "[[777 888 999]\n",
+      " [101 102 104]]\n",
+      "[[111 222]\n",
+      " [444 555]\n",
+      " [777 888]\n",
+      " [101 102]]\n",
+      "[[111]\n",
+      " [444]\n",
+      " [777]\n",
+      " [101]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "# train and test splitting data\n",
+    "data21 = array([[111, 222, 333],\n",
+    "                [444, 555, 666],\n",
+    "                [777, 888, 999],\n",
+    "                [101, 102, 104]\n",
+    "               ])\n",
+    "# seperate data\n",
+    "split = 2\n",
+    "train, test = data21[:split,:], data21[split:,:]\n",
+    "print(train)\n",
+    "print(test)\n",
+    "# seperate more data\n",
+    "test1, train1 = data21[:,0:1], data21[:,:2]\n",
+    "print(train1)\n",
+    "print(test1)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<hr><font color=\"green\"><h1>from file: C5S4_ArrayReshaping</h1></font>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Basics of Linear Algebra for Machine Learning\n",
+    "## Index, Slice and Reshape NumPy Arrays\n",
+    "## Array Reshaping\n",
+    "## Ch5, Page 30"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "(5,)\n"
+     ]
+    }
+   ],
+   "source": [
+    "# shape of 1 dim array\n",
+    "from numpy import array\n",
+    "# define array\n",
+    "data = array([1, 2, 3, 4, 5])\n",
+    "print(data.shape)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "(3, 3)\n",
+      "Rows: 3\n",
+      "Columns: 3\n"
+     ]
+    }
+   ],
+   "source": [
+    "# shape of 2 dim array\n",
+    "data21 = array([[1, 2, 3],\n",
+    "                [4, 5, 6],\n",
+    "                [7, 8, 9]\n",
+    "               ])\n",
+    "print(data21.shape)\n",
+    "print('Rows: %d' % data21.shape[0])\n",
+    "print('Columns: %d' % data21.shape[1])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[111 222 333]\n",
+      " [444 555 666]\n",
+      " [777 888 999]]\n",
+      "[[111 222 333 444 555 666 777 888 999]]\n",
+      "[[111]\n",
+      " [222]\n",
+      " [333]\n",
+      " [444]\n",
+      " [555]\n",
+      " [666]\n",
+      " [777]\n",
+      " [888]\n",
+      " [999]]\n",
+      "(3, 3)\n",
+      "(1, 9)\n",
+      "(9, 1)\n"
+     ]
+    }
+   ],
+   "source": [
+    "# reshape 1d to 2d\n",
+    "data31 = array([[111, 222, 333],\n",
+    "                [444, 555, 666],\n",
+    "                [777, 888, 999]\n",
+    "               ])\n",
+    "data41 = data31.reshape(1,9)\n",
+    "data51 = data31.reshape(9,1)\n",
+    "print(data31)\n",
+    "print(data41)\n",
+    "print(data51)\n",
+    "print(data31.shape)\n",
+    "print(data41.shape)\n",
+    "print(data51.shape)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[[111]\n",
+      "  [222]\n",
+      "  [333]]\n",
+      "\n",
+      " [[444]\n",
+      "  [555]\n",
+      "  [666]]\n",
+      "\n",
+      " [[777]\n",
+      "  [888]\n",
+      "  [999]]]\n",
+      "(3, 3, 1)\n"
+     ]
+    }
+   ],
+   "source": [
+    "# reshape 2d to 3d vectors\n",
+    "data61 = data31.reshape(data31.shape[0],data31.shape[1],1)\n",
+    "print(data61)\n",
+    "print(data61.shape)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<hr><font color=\"green\"><h1>from file: C6S3_BroadcastingNumpy</h1></font>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Basics of Linear Algebra for Machine Learning\n",
+    "## NumPy Array Broadcasting\n",
+    "## Broadcasting in NumPy\n",
+    "## Ch6, Page 36"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "## Broadcasting is limited but still useful when arithmatic operations on 2 array dims are equal, or one has dim size 1"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[1 2 3 4 5]\n",
+      "2\n",
+      "[3 4 5 6 7]\n"
+     ]
+    }
+   ],
+   "source": [
+    "# broadcast scalar to 1d array\n",
+    "from numpy import array\n",
+    "# define array\n",
+    "a = array([1, 2, 3, 4, 5])\n",
+    "print(a)\n",
+    "# define scalar\n",
+    "b = 2\n",
+    "print(b)\n",
+    "# broadcast\n",
+    "c = a + b\n",
+    "print(c)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[1 2 3]\n",
+      " [4 5 6]\n",
+      " [7 8 9]]\n",
+      "2\n",
+      "[[ 3  4  5]\n",
+      " [ 6  7  8]\n",
+      " [ 9 10 11]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "# broadcast scalar to 2d array\n",
+    "A = array([[1, 2, 3],\n",
+    "           [4, 5, 6],\n",
+    "           [7, 8, 9]\n",
+    "          ])\n",
+    "print(A)\n",
+    "#define scalar\n",
+    "b = 2\n",
+    "print(b)\n",
+    "# broadcast\n",
+    "C = A + b\n",
+    "print(C)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[1 2 3]\n",
+      " [1 1 1]]\n",
+      "[1 1 1]\n",
+      "[[2 3 4]\n",
+      " [2 2 2]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "# broadcast 1d to 2d array\n",
+    "A11 = array([[1, 2, 3],\n",
+    "            [1, 1, 1]\n",
+    "            ])\n",
+    "print(A11)\n",
+    "# define 1d array\n",
+    "b1 = array([1, 1, 1])\n",
+    "print(b1)\n",
+    "# broadcast\n",
+    "C = A11 + b1\n",
+    "print(C)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<hr><font color=\"green\"><h1>from file: C7S2_DefineVector</h1></font>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Basics of Linear Algebra for Machine Learning\n",
+    "## Vector and Vector Arithmetic\n",
+    "## Defining a Vector\n",
+    "## Ch7, Page 44"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[1 2 3]\n"
+     ]
+    }
+   ],
+   "source": [
+    "# create a vector\n",
+    "from numpy import array\n",
+    "# define vector\n",
+    "v = array([1, 2, 3])\n",
+    "print(v)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<hr><font color=\"green\"><h1>from file: C7S3_VectorArithmetic</h1></font>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Basics of Linear Algebra for Machine Learning\n",
+    "## Vector and Vector Arithmetic\n",
+    "## Vector Arithmetic\n",
+    "## Ch7, Page 46"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[1 2 3]\n",
+      "[4 5 6]\n",
+      "[5 7 9]\n"
+     ]
+    }
+   ],
+   "source": [
+    "# vector addition\n",
+    "from numpy import array\n",
+    "# define first vector\n",
+    "a = array([1, 2, 3])\n",
+    "print(a)\n",
+    "# define second vector\n",
+    "b = array([4, 5, 6])\n",
+    "print(b)\n",
+    "# add vectors\n",
+    "c = a + b\n",
+    "print(c)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[1. 1. 1.]\n",
+      "[0.2 0.2 0.2]\n",
+      "[0.8 0.8 0.8]\n"
+     ]
+    }
+   ],
+   "source": [
+    "# vector subtraction\n",
+    "a11 = array([1.0, 1.0, 1.0])\n",
+    "print(a11)\n",
+    "# define second vector\n",
+    "b11 = array([0.2, 0.2, 0.2])\n",
+    "print(b11)\n",
+    "# subtract vectors\n",
+    "c11 = a11 - b11\n",
+    "print(c11)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[1 2 4]\n",
+      "[1 2 1]\n",
+      "[1 4 4]\n"
+     ]
+    }
+   ],
+   "source": [
+    "# vector multiplication\n",
+    "a21 = array([1, 2, 4])\n",
+    "print(a21)\n",
+    "# define second vector\n",
+    "b21 = array([1, 2, 1])\n",
+    "print(b21)\n",
+    "# multiply vectors\n",
+    "c21 = a21 * b21\n",
+    "print(c21)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "NameError",
+     "evalue": "name 'array' is not defined",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
+      "\u001b[0;32m<ipython-input-1-d263d8263b54>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[1;32m      1\u001b[0m \u001b[0;31m# vector division\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m----> 2\u001b[0;31m \u001b[0ma31\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0marray\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;36m1\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;36m2\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;36m3\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m      3\u001b[0m \u001b[0mprint\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0ma31\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      4\u001b[0m \u001b[0;31m# define second vector\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      5\u001b[0m \u001b[0mb31\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0marray\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;36m0.1\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;36m0.2\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;36m0.3\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+      "\u001b[0;31mNameError\u001b[0m: name 'array' is not defined"
+     ]
+    }
+   ],
+   "source": [
+    "# vector division\n",
+    "a31 = array([1, 2, 3])\n",
+    "print(a31)\n",
+    "# define second vector\n",
+    "b31 = array([0.1, 0.2, 0.3])\n",
+    "print(b31)\n",
+    "# divide vectors\n",
+    "c31 = a31 / b31\n",
+    "print(c31)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<hr><font color=\"green\"><h1>from file: C7S4_VectorDotProd</h1></font>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Basics of Linear Algebra for Machine Learning\n",
+    "## Vector and Vector Arithmetic\n",
+    "## Vector Dot Product\n",
+    "## Ch7, Page 49"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[1 2 3]\n",
+      "[2 2 2]\n",
+      "12\n"
+     ]
+    }
+   ],
+   "source": [
+    "# vector dot product\n",
+    "from numpy import array\n",
+    "# define first vector\n",
+    "a = array([1, 2, 3])\n",
+    "print(a)\n",
+    "# define second vector\n",
+    "b = array([2, 2, 2])\n",
+    "print(b)\n",
+    "# dot vectors\n",
+    "c = a.dot(b)\n",
+    "print(c)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<hr><font color=\"green\"><h1>from file: C7S5_VectorScalarMulti</h1></font>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Basics of Linear Algebra for Machine Learning\n",
+    "## Vector and Vector Arithmetic\n",
+    "## Vector-Scalar Multiplication\n",
+    "## Ch7, Page 50"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[1 2 3]\n",
+      "0.5\n",
+      "[0.5 1.  1.5]\n"
+     ]
+    }
+   ],
+   "source": [
+    "# vector-scalar multiplication\n",
+    "from numpy import array\n",
+    "# define vector\n",
+    "a = array([1, 2, 3])\n",
+    "print(a)\n",
+    "# define scalar\n",
+    "s = 0.5\n",
+    "print(s)\n",
+    "# vector-scalar multiply\n",
+    "c = a * s\n",
+    "print(c)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<hr><font color=\"green\"><h1>from file: C8S2_VectorL1Norm</h1></font>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Basics of Linear Algebra for Machine Learning\n",
+    "## Vector Norms\n",
+    "## Vector L1 Norm\n",
+    "## Ch8, Page 54"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[1 2 3]\n",
+      "6.0\n"
+     ]
+    }
+   ],
+   "source": [
+    "# vector L1 norm\n",
+    "from numpy import array\n",
+    "from numpy.linalg import norm\n",
+    "# define vector\n",
+    "a = array([1, 2, 3])\n",
+    "print(a)\n",
+    "# calculate norm\n",
+    "l1 = norm(a, 1)\n",
+    "print(l1)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<hr><font color=\"green\"><h1>from file: C8S3_VectorL2Norm</h1></font>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Basics of Linear Algebra for Machine Learning\n",
+    "## Vector Norms\n",
+    "## Vector L2 Norm\n",
+    "## Ch8, Page 55"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[1 2 3]\n",
+      "3.7416573867739413\n"
+     ]
+    }
+   ],
+   "source": [
+    "# vector L2 norm\n",
+    "from numpy import array\n",
+    "from numpy.linalg import norm\n",
+    "# define vector\n",
+    "a = array([1, 2, 3])\n",
+    "print(a)\n",
+    "# calculate l2 norm\n",
+    "l2 = norm(a, 2)\n",
+    "print(l2)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<hr><font color=\"green\"><h1>from file: C8S4_VectorMaxNorm</h1></font>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Basics of Linear Algebra for Machine Learning\n",
+    "## Vector Norms\n",
+    "## Vector Max Norm\n",
+    "## Ch8, Page 56"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# vector max norm\n",
+    "from numpy import inf\n",
+    "from numpy import array\n",
+    "from numpy.linalg import norm\n",
+    "# define vector\n",
+    "a = array([1, 2, 3])\n",
+    "print(a)\n",
+    "# calculate norm\n",
+    "maxnorm = norm(a, inf)\n",
+    "print"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<hr><font color=\"green\"><h1>from file: C9S2_MatArithmetic</h1></font>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Basics of Linear Algebra for Machine Learning\n",
+    "## Matricies and Matrix Arithmetic\n",
+    "## Define a Matrix\n",
+    "## Ch9, Page 58"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# create matrix\n",
+    "from numpy import array\n",
+    "A = array([])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<hr><font color=\"green\"><h1>from file: C9S3_MatArithmetic</h1></font>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Basics of Linear Algebra for Machine Learning\n",
+    "## Matricies and Matrix Arithmetic\n",
+    "## Matrix Arithmetic\n",
+    "## Ch9, Page 59"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[1 2 3]\n",
+      " [4 5 6]]\n",
+      "[[1 2 3]\n",
+      " [4 5 6]]\n",
+      "[[ 2  4  6]\n",
+      " [ 8 10 12]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "# matrix addition\n",
+    "from numpy import array\n",
+    "# define first matrix\n",
+    "A = array([\n",
+    "    [1, 2, 3],\n",
+    "    [4, 5, 6]\n",
+    "])\n",
+    "print(A)\n",
+    "#define second matrix\n",
+    "B = array([\n",
+    "    [1, 2, 3],\n",
+    "    [4, 5, 6]\n",
+    "])\n",
+    "print(B)\n",
+    "# add matrices\n",
+    "C = A + B\n",
+    "print(C)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[1 2 3]\n",
+      " [4 5 6]]\n",
+      "[[0.9 1.9 2.9]\n",
+      " [3.9 4.9 5.9]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "# matrix subtraction\n",
+    "# define first matrix\n",
+    "A = array([\n",
+    "    [1, 2, 3],\n",
+    "    [4, 5, 6]\n",
+    "])\n",
+    "print(A)\n",
+    "# define second matrix\n",
+    "B = array([\n",
+    "    [0.1, 0.1, 0.1],\n",
+    "    [0.1, 0.1, 0.1]\n",
+    "])\n",
+    "# subtract matrices\n",
+    "C = A - B\n",
+    "print(C)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<hr><font color=\"green\"><h1>from file: C9S4_MatArithmetic</h1></font>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Basics of Linear Algebra for Machine Learning\n",
+    "## Matricies and Matrix Arithmetic\n",
+    "## Matrix Multiplication\n",
+    "## Ch9, Page 62"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[1 2 3]\n",
+      " [4 5 6]]\n",
+      "[[2 2 2]\n",
+      " [2 2 2]]\n",
+      "[[ 2  4  6]\n",
+      " [ 8 10 12]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "# matrix Hadamard product\n",
+    "from numpy import array\n",
+    "# define first matrix\n",
+    "A = array([\n",
+    "    [1, 2, 3],\n",
+    "    [4, 5, 6]\n",
+    "])\n",
+    "print(A)\n",
+    "#define second matrix\n",
+    "B = array([\n",
+    "    [2, 2, 2],\n",
+    "    [2, 2, 2]\n",
+    "])\n",
+    "print(B)\n",
+    "# multiply matrices\n",
+    "C = A * B\n",
+    "print(C)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[1 2 3]\n",
+      " [4 5 6]]\n",
+      "[[2 2 2]\n",
+      " [2 2 2]]\n",
+      "[[0.5 1.  1.5]\n",
+      " [2.  2.5 3. ]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "# matrix division\n",
+    "#define first matrix\n",
+    "A = array([\n",
+    "    [1, 2, 3],\n",
+    "    [4, 5, 6]\n",
+    "])\n",
+    "print(A)\n",
+    "#define second matrix\n",
+    "B = array([\n",
+    "    [2, 2, 2],\n",
+    "    [2, 2, 2]\n",
+    "])\n",
+    "print(B)\n",
+    "# divide matrices\n",
+    "C = A / B\n",
+    "print(C)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<hr><font color=\"green\"><h1>from file: C9S5_MatDotProd</h1></font>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Basics of Linear Algebra for Machine Learning\n",
+    "## Matricies and Matrix Arithmetic\n",
+    "## Matrix-Matrix Multiplication\n",
+    "## Ch9, Page 64"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[1 2]\n",
+      " [3 4]\n",
+      " [5 6]]\n",
+      "[[1 2]\n",
+      " [3 4]]\n",
+      "[[ 7 10]\n",
+      " [15 22]\n",
+      " [23 34]]\n",
+      "[[ 7 10]\n",
+      " [15 22]\n",
+      " [23 34]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "# matrix dot product\n",
+    "from numpy import array\n",
+    "# define first matrix\n",
+    "A = array([\n",
+    "    [1, 2],\n",
+    "    [3, 4],\n",
+    "    [5, 6]\n",
+    "])\n",
+    "print(A)\n",
+    "#define second matrix\n",
+    "B = array([\n",
+    "    [1, 2],\n",
+    "    [3, 4]\n",
+    "])\n",
+    "print(B)\n",
+    "# multiply matrices\n",
+    "C = A.dot(B)\n",
+    "print(C)\n",
+    "# multipy matrices with @ operator\n",
+    "D = A @ B\n",
+    "print(D)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<hr><font color=\"green\"><h1>from file: C9S6_MatVectProd</h1></font>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Basics of Linear Algebra for Machine Learning\n",
+    "## Matricies and Matrix Arithmetic\n",
+    "## Matrix-Vector Multiplication\n",
+    "## Ch9, Page 66"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[1 2]\n",
+      " [3 4]\n",
+      " [5 6]]\n",
+      "(3, 2)\n",
+      "[0.5 0.5]\n",
+      "(2,)\n",
+      "[1.5 3.5 5.5]\n",
+      "[1.5 3.5 5.5]\n"
+     ]
+    }
+   ],
+   "source": [
+    "# matrix-vector multiplication\n",
+    "from numpy import array\n",
+    "# define matrix\n",
+    "A = array([\n",
+    "    [1, 2],\n",
+    "    [3, 4],\n",
+    "    [5, 6]\n",
+    "])\n",
+    "print(A)\n",
+    "print(A.shape)\n",
+    "#define vector\n",
+    "B = array([0.5, 0.5])\n",
+    "print(B)\n",
+    "print(B.shape)\n",
+    "# multiply\n",
+    "C = A.dot(B)\n",
+    "D = A @ B\n",
+    "print(C)\n",
+    "print(D)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<hr><font color=\"green\"><h1>from file: C9S7_MatScalProd</h1></font>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Basics of Linear Algebra for Machine Learning\n",
+    "## Matricies and Matrix Arithmetic\n",
+    "## Matrix-Scalar Multiplication\n",
+    "## Ch9, Page 67"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[1 2]\n",
+      " [3 4]\n",
+      " [5 6]]\n",
+      "0.5\n",
+      "[[0.5 1. ]\n",
+      " [1.5 2. ]\n",
+      " [2.5 3. ]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "# matrix-scalar multiplication\n",
+    "from numpy import array\n",
+    "# define matrix\n",
+    "A = array([\n",
+    "    [1, 2],\n",
+    "    [3, 4],\n",
+    "    [5, 6]\n",
+    "])\n",
+    "print(A)\n",
+    "#define scalar\n",
+    "b = 0.5\n",
+    "print(b)\n",
+    "# multiply\n",
+    "C = A * b\n",
+    "print(C)\n"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.7.6"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}
