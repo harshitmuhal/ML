@@ -2,7 +2,9 @@ Not Done but marked in course-
 
 object oriented programming and modules
 file and error handling
-"PCA algorithm" video
+"PCA algorithm" named single video
 Asynchronous programming 
 Intermediate python videos 
 Capstone AI Music generation project
+Face recognition videos
+Covid detection using xrays
